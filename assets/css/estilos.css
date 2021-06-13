@@ -7,7 +7,7 @@
 }
 
 body{
-    background-image: url(../images/bg4.jpg);
+    background-image: url(../images/Fondo.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -35,8 +35,8 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 128, 255, 0.5);
-
+    background-color: rgba(0, 128, 255, 0.5);/*Sirve para asignar el color de las letras*/
+    
 }
 
 .caja__trasera div{
