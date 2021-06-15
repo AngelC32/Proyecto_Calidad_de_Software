@@ -1,4 +1,1 @@
-# Proyecto_Calidad_de_Software
-:Gordastor:
-:GatitoPasivo:
-GAAAAAAAAAAAA TOY DROGAOOOOOOOOOOOOOOOO
+# Proyecto_Calidad_de_Software - GRUPO 6
