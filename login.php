@@ -1,3 +1,10 @@
+<?php
+    
+    //if(!session_start()){
+        //header('Location: login.html');
+        //exit;
+    //}
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
@@ -13,11 +20,28 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/pestana.png"> <!-- imagen q sale en la pestaña -->
 
     <link rel="stylesheet" href="css/stile-login.css">
-
+    <link rel="stylesheet" href="css/default.css">
 
 </head>
 <body>
-
+    <!-- Menu de Navegacion -->
+    <header id="header">
+    <nav class="menu">
+     <div class="logo-box">
+       <h1><a href="index.html">VID 19 </a></h1>
+       <span class="btn-menu"><i class="fas fa-bars"></i></span> <!-- Icono de barra de menu -->
+     </div>
+     
+     <div class="list-container">
+        <ul class="lists">
+            <li><a href="index.html" class="activo">Inicio</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="#">Preguntas Frecuentes</a></li>
+            <li><a href="#">Contactos</a></li>
+        </ul>
+     </div>
+    </nav>
+    </header>
         <main>
 
             <div class="contenedor__todo">
@@ -37,21 +61,20 @@
                 <!--Formulario de Login y registro-->
                 <div class="contenedor__login-register">
                     <!--Login-->
-                    <form action="package/src/html/index.html" class="formulario__login" method="POST" class="formulario__login">
+                    <form method="POST" action="php/login_u.php" name="signup-form" class="formulario__login">
                         <h2>Iniciar Sesión</h2>
-                        <input type="text" placeholder="Correo Electronico" name = "correo">
-                        <input type="password" placeholder="Contraseña" name = "contrasena">
-                        <button>Entrar</button>
+                        <input type="text" placeholder="usuario" name = "username" required> 
+                        <input type="password" placeholder="Contraseña" name = "password" required>
+                        <button type="submit" name="login" value="login">Entrar</button>
                     </form>
 
                     <!--Register-->
-                    <form action="php/registro_usuario.php" method="POST" class="formulario__register">
+                    <form method="POST" action="php/register.php" name="signin-form" class="formulario__register">
                         <h2>Regístrarse</h2>
-                        <input type="text" placeholder="Nombre completo" name = "nombre">
-                        <input type="text" placeholder="Correo Electronico" name = "correo">
-                        <input type="text" placeholder="Usuario" name = "usuario">
-                        <input type="password" placeholder="Contraseña" name = "contrasena">
-                        <button>Regístrarse</button>
+                        <input type="text" placeholder="Usuario" name = "username" required>
+                        <input type="text" placeholder="Correo Electronico" name = "email" required>
+                        <input type="password" placeholder="Contraseña" name = "password" required>
+                        <button type="submit" name="register" value="register">Registrarse</button>
                     </form>
                 </div>
             </div>
