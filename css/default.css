@@ -1,0 +1,14 @@
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(../img/consulta.jpg);
+    background-size: 1540px 770px;
+    overflow-x: hidden;
+   }
+
+
+/** Navegation Menu **/

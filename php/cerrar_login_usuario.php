@@ -7,11 +7,11 @@
         
         session_destroy();
 
-        header("location: ../index.html");
+        header("location: ../login.html");
         
     }else{
         //no existe la sesion
-        header("location: ../index.html");
+        header("location: ../login.html");
         
     }
 
