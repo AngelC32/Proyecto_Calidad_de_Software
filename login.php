@@ -7,7 +7,6 @@
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,11 +14,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-    <!--<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
     <link rel="shortcut icon" type="image/x-icon" href="img/pestana.png"> <!-- imagen q sale en la pestaña -->
-    
-    <link rel="stylesheet" href="css/styles.css">
+
     <link rel="stylesheet" href="css/stile-login.css">
     <link rel="stylesheet" href="css/default.css">
 
@@ -29,8 +27,7 @@
     <header id="header">
     <nav class="menu">
      <div class="logo-box">
-     <div class="Inicio-title"><a href="index.html"><img src="img/logo.png" alt=""></a></div>
-  
+       <h1><a href="index.html">VID 19 </a></h1>
        <span class="btn-menu"><i class="fas fa-bars"></i></span> <!-- Icono de barra de menu -->
      </div>
      
@@ -38,8 +35,8 @@
         <ul class="lists">
             <li><a href="index.html" class="activo">Inicio</a></li>
             <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="preguntas frecuentes.html">Preguntas Frecuentes</a></li>
-            <li><a href="login.php">Registrarse</a></li> 
+            <li><a href="#">Preguntas Frecuentes</a></li>
+            <li><a href="#">Contactos</a></li>
         </ul>
      </div>
     </nav>
@@ -82,7 +79,8 @@
             </div>
 
         </main>
-        <script src="https://kit.fontawesome.com/4fd30bc253.js" crossorigin="anonymous"></script>
+
+
         <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,17 +1,17 @@
 <?php
     
-    include 'config.php';
+    include_once 'config.php';
     session_start();
 
     if(isset($_SESSION['user'])){
         
         session_destroy();
 
-        header("location: ../login.html");
+        header("location: ../index.html");
         
     }else{
         //no existe la sesion
-        header("location: ../login.html");
+        header("location: ../index.html");
         
     }
 

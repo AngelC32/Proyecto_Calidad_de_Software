@@ -43,6 +43,8 @@
     color: var(--blue);
  }
  
+ 
+  Skew 
  .skew-abajo{
      position: absolute;
      bottom: 0;
@@ -79,15 +81,13 @@
      align-items: center;
      z-index: 9999;
  }
- .menu .logo-box{
-     margin-left: 20px;
-    }
-.menu .logo-box .Inicio-title{
-        display: flex;
-        justify-content: center;
-        margin-bottom: -10px;
-    }
-
+ .menu .logo-box{margin-left: 20px;}
+ .menu .logo-box h1 a{
+     text-decoration: none;
+     font-size: var(--title);
+     font-weight: 400;
+     color:var(--blue);
+ }
  .menu .list-container{margin-right: 20px;}
  .menu .list-container ul{display: flex;}
  .menu .list-container ul li{list-style: none;}
@@ -588,5 +588,5 @@
     color: var(--blue);
 }
 
-
-
+ 
+ 

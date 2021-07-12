@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-06-2021 a las 02:13:31
+-- Tiempo de generación: 07-07-2021 a las 22:16:51
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -68,9 +68,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `role` enum('paciente','doctor','admin') NOT NULL,
-  `budget` float(10,2) NOT NULL,
   `photo` varchar(300) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -79,12 +78,16 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `pass`, `role`, `budget`, `photo`, `name`) VALUES
-(1, 'moises ventura', 'cristhofer.ventura@unmsm.edu.pe', '$2y$10$KY7JQbcDSGTaMsoi2in6r.vMZ/opnAZjIZaZcREK3lW', 'admin', 0.00, '', ''),
-(11, 'botcito1', 'GreenMachiine2020@gmail.com', '$2y$10$x7F2g76wjY/jk7YoCXm9/u7Sl6DkIMVjqHxhCHP/c9x', 'paciente', 0.00, '', ''),
-(13, 'botcito', 'fcmacx0806@gmelk.com', '$2y$10$ze.1I8i.8ckhw2m4q3GJSOIfJB72Jm.UkJiweXQNpUl', 'paciente', 0.00, '', ''),
-(14, 'Dani uwu', 'mamuteo322@gmail.com', '$2y$10$rvvTP5G6sNQ6WfULlE4r0eWOR7c2Az4TOydD62eGOP8', 'paciente', 0.00, '', ''),
-(15, 'maishet', 'www@gmail.com', '12345', 'paciente', 0.00, '', '');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `photo`, `name`) VALUES
+(1, 'moises ventura', 'cristhofer.ventura@unmsm.edu.pe', '$2y$10$KY7JQbcDSGTaMsoi2in6r.vMZ/opnAZjIZaZcREK3lW', 'admin', '', ''),
+(11, 'botcito1', 'GreenMachiine2020@gmail.com', '$2y$10$x7F2g76wjY/jk7YoCXm9/u7Sl6DkIMVjqHxhCHP/c9x', 'paciente', '', ''),
+(13, 'botcito', 'fcmacx0806@gmelk.com', '$2y$10$ze.1I8i.8ckhw2m4q3GJSOIfJB72Jm.UkJiweXQNpUl', 'paciente', '', ''),
+(14, 'Dani uwu', 'mamuteo322@gmail.com', '$2y$10$rvvTP5G6sNQ6WfULlE4r0eWOR7c2Az4TOydD62eGOP8', 'paciente', '', ''),
+(15, 'maishet', 'www@gmail.com', '$2y$10$CZ.4bMDMW3IrCF20ftC1VOCOQFe/M8BMNGl/uyHIInP', 'paciente', '', ''),
+(17, 'ana', 'anaavellana@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'paciente', '', ''),
+(18, 'pepe', 'maishet.ventura@gmail.com', '$2y$10$TCayYvl/o7TmMAUbXazRJ.RvaU9kinstrM9/f9mJNbo', 'paciente', '', ''),
+(19, 'paciente', 'paciente@gmail.com', '$2y$10$AYz6bPJlgEqAFHKDKBlBs.sgpEeIYAH0bLwjsB2NCaZ', 'paciente', '', ''),
+(21, 'admin', 'admin.gmail.com', '$2y$10$ej2geEw3addKNswx2fR0SONFZmqHzTZ08wtnaKbckh6', 'paciente', '', '');
 
 --
 -- Índices para tablas volcadas
@@ -131,7 +134,7 @@ ALTER TABLE `data_medica`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Restricciones para tablas volcadas
