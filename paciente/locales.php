@@ -46,7 +46,17 @@ if(!isset($_SESSION['user_id'])){
      </div>
     </nav>
     <!-- Imagen Header -->
+    <div class="img-header">
+      <div class="texto-info"> 
+        <div class="map-oxigeno">  
+         <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1gF2RY8n5StvqMhBo-AfYFqUag4RvkwLv" width="840" height="680"></iframe>
+        </div>
+          <h2><b>Gob.pe</b></h2>
 
+        <hr>
+      </div>     
+        
+    </div>
     </header>
 
     <!--  -->
