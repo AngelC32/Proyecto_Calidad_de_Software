@@ -27,6 +27,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $result['password'])){    //verifica en la base de datos
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['user'] = $result['username'];
+            $_SESSION['user_email'] = $result['email'];
             $_SESSION['user_rol'] = $result['role'];           //tipo de usuario
 
             if($_SESSION['user_rol'] == "paciente")
@@ -43,6 +44,7 @@ if (isset($_POST['login'])) {
             ////////////////////////////////////////
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['user'] = $result['username'];
+            $_SESSION['user_email'] = $result['email'];
             $_SESSION['user_rol'] = $result['role'];           //tipo de usuario
 
             if($_SESSION['user_rol'] == "paciente")

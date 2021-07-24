@@ -26,6 +26,9 @@ if(!isset($_SESSION['user_id'])){
 
         <link rel="stylesheet" href="../css/default.css"> <!-- LO PUEDES CAMBIAR A "../css/styles.css" -->
 
+          <!-- Custom styles for this template-->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
+
     </head>
     <body>
     <!-- Menu de Navegacion -->
@@ -60,6 +63,8 @@ if(!isset($_SESSION['user_id'])){
     </header>
 
     <!--  -->
+    
+    
     <main>
 
     <!-- footer -->

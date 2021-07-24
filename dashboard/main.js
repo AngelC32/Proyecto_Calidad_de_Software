@@ -28,7 +28,7 @@ $("#btnNuevo").click(function(){
     opcion = 1; //alta
     $("#formPersonas").trigger("reset");
     $(".modal-header").css("background-color", "#1cc88a");
-    $(".modal-header").css("color", "white");
+    $(".modal-header").css("color", "blue");
     $(".modal-title").text("Nuevo Usuario");            
     $("#modalCRUD").modal("show");        
 
