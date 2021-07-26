@@ -427,8 +427,6 @@
 }
 
 
-
-
  /** Vision y Mision **/
  .visymis{
     width: 100%;
@@ -591,5 +589,112 @@
     color: var(--blue);
 }
 
+ /** Preguntas frecuentes **/
  
- 
+.encabezadoPreg{
+    position: relative;
+    width: 100vw;
+    height: 75vh;
+    background:url(../img/preguntas.jpg);
+    background-attachment: fixed;
+    background-size: 1530px 575px;
+
+}
+.encabezadoPreg .info-container{
+    position: absolute;
+    top: 0;
+    background: #2c8196e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+     right: 60%;
+     width: 40vw;/**parte la pantalla en 2 si le doy 50**/
+     height: 100%;
+  
+}
+.encabezadoPreg .info-container h1{
+    font-size: 80px;
+    color:#fff;
+    font-weight: 700;/**grosor de titulo**/
+    text-align: center;
+}
+
+.encabezadoPreg .info-container p{
+    
+    font-size: 20px;
+     color: rgb(255, 255, 255);
+     margin-top: 20px;
+     margin-bottom: 20px;
+     padding-left: 90px;
+     padding-right: 90px;
+     justify-content: center;
+}
+.preguntasfrec{
+    width: 100%;
+     margin-top: 10px;
+     background: var(--blue);
+     margin-bottom: -70px;
+}
+.preguntasfrec .preguntasfrec-title{
+    width: 80%;
+    margin:auto;
+    text-align: center;
+}
+.preguntasfrec .preguntasfrec-title h1{
+    font-size: 60px;
+    font-weight: normal;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+.preguntasfrec .preguntasfrec-title hr{
+    width: 40%;
+    height: 2px;
+    margin:auto;
+    border: 1px solid red;
+}
+.preguntasfrec .box-preguntasfrec{
+    width: 100%;
+    margin: 70px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.preguntasfrec .box-preguntasfrec .card-preguntasfrec   {
+    width: 40%;
+    margin: 20px;
+}
+.preguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text{
+    border: 1px solid red;
+    padding:20px;
+    border-radius: 20px;
+    transition: 0.1s;
+    cursor:auto;
+}
+.preguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text h2{
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 10px;
+    transition: 0.1s;
+}
+.preguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text p{
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    color: var(--white);
+    justify-content: center;
+}
+.preguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text :hover{
+    border: 2px solid var(--white);
+}
+.preguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text :hover h2{
+    color: var(--white);
+}
+
+@media only screen and (max-width:890px){
+    .preguntasfrec .box-preguntasfrec.card-preguntasfrec {width: 100%;}
+    .vpreguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text h2{font-size: 25px;}
+    .preguntasfrec .box-preguntasfrec .card-preguntasfrec .preguntasfrec-text p{font-size: 17px; line-height: 35px;}
+}

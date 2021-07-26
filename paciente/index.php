@@ -32,7 +32,7 @@ if(!isset($_SESSION['user_id'])){
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Custom Theme files -->
         <link href="css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
-        <link href="css/style.css" rel='stylesheet' type='text/css' /><link href="css/style.css" rel='stylesheet' type='text/css' />
+        <link href="css/style.css" rel='stylesheet' type='text/css' />
         <!--fonts--> 
         <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
         <link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
@@ -62,12 +62,24 @@ if(!isset($_SESSION['user_id'])){
     </header>
 
     <!-- CITASSSSSSSSSSSSSSSSSSSSSSSSS -->
+
+    <?php
+        include_once '../php/config.php';
+        //$objeto = new Conexion();
+        //$conexion = $objeto->Conectar();
+
+        $consulta = "SELECT id, username, email, password, role FROM users";
+        $resultado = $connection->prepare($consulta);
+        $resultado->execute();
+        $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
+    ?>
+
     <h1>Formulario de citas médicas en línea </h1>
     <div class="bg-agile">
 	<div class="book-appointment">
 	<h2>Hacer una cita</h2>
 				
-			<form action="#" method="post" name="appointment" id="appointment">
+			<form action="../src/enviar-mail.php" method="post" name="appointment" id="appointment">
 			<div id="resultados_ajax" class="gaps"></div>
 			<div class="left-agileits-w3layouts same">
 			
@@ -95,14 +107,21 @@ if(!isset($_SESSION['user_id'])){
 			</div>
 			<div class="gaps">
 				<p>Saturación de oxígeno</p>	
-					<input name="departament" type="number" min="90" max="100" step="0.5" value=95>
+					<input name="saturacion" type="number" min="90" max="100" step="0.5" value=95>
 			</div>
 			<div class="gaps">
-				<p>Genero</p>	
-					<select class="form-control" name="gender" required>
-						<option></option>
-						<option value="M">Masculino</option>
-						<option value="F">Femenino</option>
+				<p>Seleccione el doctor</p>	
+					<select class="form-control" name="doctor" required>
+                        <?php
+                            //if($data['role'] == "doctor")                            
+                                foreach($data as $dat) {
+                                    if($dat['role'] == "doctor"){                                                    
+                        ?>
+						<option>Doctor(a) <?php echo $dat['username'] ?></option>
+                            <?php
+                                    }                            
+                                }
+                            ?>
 					</select>
 			</div>
 			<div class="gaps">
@@ -140,7 +159,7 @@ if(!isset($_SESSION['user_id'])){
 				  var parametros = $(this).serialize();
 				  $.ajax({
 						type: "POST",
-						url: "enviar-mail.php",
+						url: "../src/enviar-mail.php",
 						data: parametros,
 						 beforeSend: function(objeto){
 							$("#resultados_ajax").html("Enviando...");
@@ -186,219 +205,220 @@ if(!isset($_SESSION['user_id'])){
         Chatea con nosotros</a>
         
         <style>
-            a:link,
-            a:visited {
-                color: #444;
-                text-decoration: none;
-                transition: all 0.4s ease-in-out;
+        a:link,
+        a:visited {
+            color: #444;
+            text-decoration: none;
+            transition: all 0.4s ease-in-out;
+        }
+        
+        
+        /* CSS Whatsapp Chat */
+        #whatsapp-chat {
+            position: fixed;
+            background: #fff;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
+            bottom: 90px;
+            right: 30px;
+            overflow: hidden;
+            z-index: 99;
+            animation-name: showchat;
+            animation-duration: 1s;
+            transform: scale(1);
+        }
+        
+        a.blantershow-chat {
+            /*   background: #009688; */
+            background: #fff;
+            color: #404040;
+            position: fixed;
+            display: flex;
+            font-weight: 400;
+            justify-content: space-between;
+            z-index: 98;
+            bottom: 25px;
+            right: 30px;
+            font-size: 15px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
+        }
+        
+        a.blantershow-chat svg {
+            transform: scale(1.2);
+            margin: 0 10px 0 0;
+        }
+        
+        .header-chat {
+            background: #095e54;
+            color: #fff;
+            padding: 20px;
+        }
+        .header-chat h3 {
+            margin: 0 0 10px;
+        }
+        .header-chat p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+        .info-avatar {
+            position: relative;
+        }
+        .info-avatar img {
+            border-radius: 100%;
+            width: 50px;
+            float: left;
+            margin: 0 10px 0 0;
+        }
+        .info-avatar:before {
+            content: "\f232";
+            z-index: 1;
+            font-family: "Font Awesome 5 Brands";
+            background: #23ab23;
+            color: #fff;
+            padding: 4px 5px;
+            border-radius: 100%;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+        
+        .info-chat span {
+            display: block;
+        }
+        #get-label,
+        span.chat-label {
+            font-size: 12px;
+            color: #888;
+        }
+        #get-nama,
+        span.chat-nama {
+            margin: 5px 0 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #222;
+        }
+        #get-label,
+        #get-nama {
+            color: #fff;
+        }
+        span.my-number {
+            display: none;
+        }
+        .blanter-msg {
+            color: #444;
+            padding: 20px;
+            font-size: 12.5px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        textarea#chat-input {
+            border: none;
+            font-family: "Arial", sans-serif;
+            width: 100%;
+            height: 20px;
+            outline: none;
+            resize: none;
+        }
+        a#send-it {
+            color: #555;
+            width: 40px;
+            margin: -5px 0 0 5px;
+            font-weight: 700;
+            padding: 8px;
+            background: #eee;
+            border-radius: 10px;
+        }
+        .first-msg {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+        }
+        .first-msg span {
+            background: #e2e2e2;
+            color: #222;
+            font-size: 14.2px;
+            line-height: 1.7;
+            border-radius: 10px;
+            padding: 15px 20px;
+            display: inline-block;
+        }
+        .start-chat .blanter-msg {
+            display: flex;
+        }
+        #get-number {
+            display: none;
+        }
+        a.close-chat {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: #fff;
+            font-size: 30px;
+        }
+        @keyframes showhide {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
             }
-            
-            
-            /* CSS Whatsapp Chat */
+        }
+        @keyframes showchat {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+        @media screen and (max-width: 480px) {
             #whatsapp-chat {
-                position: fixed;
-                background: #fff;
-                width: 350px;
-                border-radius: 10px;
-                box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
-                bottom: 90px;
-                right: 30px;
-                overflow: hidden;
-                z-index: 99;
-                animation-name: showchat;
-                animation-duration: 1s;
-                transform: scale(1);
+                width: auto;
+                left: 5%;
+                right: 5%;
+                font-size: 80%;
             }
-            
-            a.blantershow-chat {
-                /*   background: #009688; */
-                background: #fff;
-                color: #404040;
-                position: fixed;
-                display: flex;
-                font-weight: 400;
-                justify-content: space-between;
-                z-index: 98;
-                bottom: 25px;
-                right: 30px;
-                font-size: 15px;
-                padding: 10px 20px;
-                border-radius: 30px;
-                box-shadow: 0 1px 15px rgba(32, 33, 36, 0.28);
-            }
-            
-            a.blantershow-chat svg {
-                transform: scale(1.2);
-                margin: 0 10px 0 0;
-            }
-            
-            .header-chat {
-                background: #095e54;
-                color: #fff;
-                padding: 20px;
-            }
-            .header-chat h3 {
-                margin: 0 0 10px;
-            }
-            .header-chat p {
-                font-size: 14px;
-                line-height: 1.7;
-                margin: 0;
-            }
-            .info-avatar {
-                position: relative;
-            }
-            .info-avatar img {
-                border-radius: 100%;
-                width: 50px;
-                float: left;
-                margin: 0 10px 0 0;
-            }
-            .info-avatar:before {
-                content: "\f232";
-                z-index: 1;
-                font-family: "Font Awesome 5 Brands";
-                background: #23ab23;
-                color: #fff;
-                padding: 4px 5px;
-                border-radius: 100%;
-                position: absolute;
-                top: 30px;
-                left: 30px;
-            }
-            
-            .info-chat span {
-                display: block;
-            }
-            #get-label,
-            span.chat-label {
-                font-size: 12px;
-                color: #888;
-            }
-            #get-nama,
-            span.chat-nama {
-                margin: 5px 0 0;
-                font-size: 15px;
-                font-weight: 700;
-                color: #222;
-            }
-            #get-label,
-            #get-nama {
-                color: #fff;
-            }
-            span.my-number {
-                display: none;
-            }
-            .blanter-msg {
-                color: #444;
-                padding: 20px;
-                font-size: 12.5px;
-                text-align: center;
-                border-top: 1px solid #ddd;
-            }
-            textarea#chat-input {
-                border: none;
-                font-family: "Arial", sans-serif;
-                width: 100%;
-                height: 20px;
-                outline: none;
-                resize: none;
-            }
-            a#send-it {
-                color: #555;
-                width: 40px;
-                margin: -5px 0 0 5px;
-                font-weight: 700;
-                padding: 8px;
-                background: #eee;
-                border-radius: 10px;
-            }
-            .first-msg {
-                background: #f5f5f5;
-                padding: 30px;
-                text-align: center;
-            }
-            .first-msg span {
-                background: #e2e2e2;
-                color: #333;
-                font-size: 14.2px;
-                line-height: 1.7;
-                border-radius: 10px;
-                padding: 15px 20px;
-                display: inline-block;
-            }
-            .start-chat .blanter-msg {
-                display: flex;
-            }
-            #get-number {
-                display: none;
-            }
-            a.close-chat {
-                position: absolute;
-                top: 5px;
-                right: 15px;
-                color: #fff;
-                font-size: 30px;
-            }
-            @keyframes showhide {
-                from {
-                    transform: scale(0.5);
-                    opacity: 0;
-                }
-            }
-            @keyframes showchat {
-                from {
-                    transform: scale(0);
-                    opacity: 0;
-                }
-            }
-            @media screen and (max-width: 480px) {
-                #whatsapp-chat {
-                    width: auto;
-                    left: 5%;
-                    right: 5%;
-                    font-size: 80%;
-                }
-            }
-            .hide {
-                display: none;
-                animation-name: showhide;
-                animation-duration: 1.5s;
-                transform: scale(1);
-                opacity: 1;
-            }
-            .show {
-                display: block;
-                animation-name: showhide;
-                animation-duration: 1.5s;
-                transform: scale(1);
-                opacity: 1;
-            }
+        }
+        .hide {
+            display: none;
+            animation-name: showhide;
+            animation-duration: 1.5s;
+            transform: scale(1);
+            opacity: 1;
+        }
+        .show {
+            display: block;
+            animation-name: showhide;
+            animation-duration: 1.5s;
+            transform: scale(1);
+            opacity: 1;
+        }
+        
         
         </style>
         
         <script>
         
-            function enviar_mensaje(){
-            var a = document.getElementById("chat-input");
-                if ("" != a.value) {
-                    var b = document.getElementById("get-number").innerHTML,c = document.getElementById("chat-input").value, d = "https://web.whatsapp.com/send", e = b,  f = "&text=" + c;
-                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) var d = "whatsapp://send";  var g = d + "?phone=" + e + f;  window.open(g, "_blank");
-                }
+        function enviar_mensaje(){
+        var a = document.getElementById("chat-input");
+            if ("" != a.value) {
+                var b = document.getElementById("get-number").innerHTML,c = document.getElementById("chat-input").value, d = "https://web.whatsapp.com/send", e = b,  f = "&text=" + c;
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) var d = "whatsapp://send";  var g = d + "?phone=" + e + f;  window.open(g, "_blank");
             }
+        }
+        
+        const whatsapp_chat =document.getElementById("whatsapp-chat");
+        
+        function cerrar_chat(){
+            whatsapp_chat.classList.add("hide");
+            whatsapp_chat.classList.remove("show");
             
-            const whatsapp_chat =document.getElementById("whatsapp-chat");
-            
-            function cerrar_chat(){
-                whatsapp_chat.classList.add("hide");
-                whatsapp_chat.classList.remove("show");
-                
-            }
-            
-            function mostrar_chat(){
-                whatsapp_chat.classList.add("show");
-                whatsapp_chat.classList.remove("hide");
-            }
+        }
+        
+        function mostrar_chat(){
+            whatsapp_chat.classList.add("show");
+            whatsapp_chat.classList.remove("hide");
+        }
         </script>
     </footer>
 </html>

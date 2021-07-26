@@ -71,7 +71,7 @@ h1 {
 }
 .book-appointment input[type="text"], .book-appointment input[type="number"], .book-appointment input[type="date"], .book-appointment input[type="time"], .book-appointment input[type="email"],textarea {
     width: 85%;
-    color: #fff;
+    color: #222;
     outline: none;
     font-size: 0.9em;
     line-height: 25px;
