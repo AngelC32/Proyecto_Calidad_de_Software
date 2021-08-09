@@ -74,17 +74,15 @@ if (!isset($_SESSION['user_id'])) {
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Detalles</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Detalles</h6>
-            <a class="collapse-item" href="cards.php">Graficos de recurrencias</a>
-          </div>
-        </div>
+      <li class="nav-item active">
+        <a class="nav-link" href="citas.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Citas</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="recetas.php">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Recetas</span></a>
       </li>
 
 
@@ -175,14 +173,6 @@ if (!isset($_SESSION['user_id'])) {
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Perfil
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Configuración
-                </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -26,6 +26,7 @@ if(!isset($_SESSION['user_id'])){
 
         <link rel="stylesheet" href="../css/default.css"> <!-- LO PUEDES CAMBIAR A "../css/styles.css" -->
 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     </head>
     <body>
@@ -40,8 +41,10 @@ if(!isset($_SESSION['user_id'])){
      <div class="list-container">
         <ul class="lists">
             <li><a class="activo"><?php echo $user?></a></li>
-            <li><a href="#">Recomendaciones</a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
             <li><a href="locales.php">Buscar locales de oxigeno</a></li>
+            <li><a href="misCitas.php">Mis Citas</a></li>
+            <li><a href="misRecetas.php">Mis Recetas</a></li>
             <li><a href="../php/cerrar_login_usuario.php">Cerrar sesion</a></li>
         </ul>
      </div>

@@ -1,14 +1,14 @@
 <?php
  
 include('config.php');
-session_start();
+//session_start();
  
 if (isset($_POST['register'])) {
  
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    $password_hash = md5($_POST['password']);
  
     $query = $connection->prepare("SELECT * FROM users WHERE email=:email");
     $query->bindParam("email", $email, PDO::PARAM_STR);

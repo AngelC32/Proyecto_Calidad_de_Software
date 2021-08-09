@@ -1,21 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
+-- version 3.5.1
+-- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2021 a las 22:16:51
--- Versión del servidor: 10.4.19-MariaDB
--- Versión de PHP: 8.0.7
+-- Servidor: localhost
+-- Tiempo de generación: 09-08-2021 a las 21:38:38
+-- Versión del servidor: 5.5.24-log
+-- Versión de PHP: 5.4.3
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de datos: `vid-19`
@@ -24,39 +23,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categorias`
+-- Estructura de tabla para la tabla `files`
 --
 
-CREATE TABLE `categorias` (
-  `id` int(5) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `color` varchar(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `paciente` varchar(200) DEFAULT NULL,
+  `number` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `sintomas` varchar(500) NOT NULL,
+  `saturacion` varchar(10) NOT NULL,
+  `doctor` varchar(500) DEFAULT NULL,
+  `fecha` text,
+  `hora` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
--- Volcado de datos para la tabla `categorias`
+-- Volcado de datos para la tabla `files`
 --
 
-INSERT INTO `categorias` (`id`, `name`, `color`) VALUES
-(1, 'Oxigeno', '#DE1F59'),
-(2, 'Temperatura', '#DE1FAA'),
-(3, 'Sintomas', '#681FDE'),
-(4, 'Recomendaciones', '#1FAADE');
+INSERT INTO `files` (`id`, `paciente`, `number`, `email`, `sintomas`, `saturacion`, `doctor`, `fecha`, `hora`) VALUES
+(7, 'maria guevara', '9875673261', 'GreenMachiine2020@gmail.com', 'https://meet.google.com/dtp-kgfz-uie', '92', 'Doctor(a) juan carrasco', '08-09-2021', '3 : 27 PM');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `data_medica`
+-- Estructura de tabla para la tabla `receta`
 --
 
-CREATE TABLE `data_medica` (
-  `id` int(20) NOT NULL,
-  `title` varchar(150) NOT NULL,
-  `category_id` int(5) NOT NULL,
-  `dato` float(10,2) NOT NULL,
-  `fecha` date NOT NULL,
-  `id_user` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `receta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `meet` varchar(500) DEFAULT NULL,
+  `url` varchar(500) DEFAULT NULL,
+  `type` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `receta`
+--
+
+INSERT INTO `receta` (`id`, `title`, `meet`, `url`, `type`) VALUES
+(8, 'maria guevara', 'receta medica para los malestares', 'files/recetapdf.pdf', NULL);
 
 -- --------------------------------------------------------
 
@@ -64,89 +74,34 @@ CREATE TABLE `data_medica` (
 -- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `role` enum('paciente','doctor','admin') NOT NULL,
   `photo` varchar(300) NOT NULL,
-  `name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `photo`, `name`) VALUES
-(1, 'moises ventura', 'cristhofer.ventura@unmsm.edu.pe', '$2y$10$KY7JQbcDSGTaMsoi2in6r.vMZ/opnAZjIZaZcREK3lW', 'admin', '', ''),
-(11, 'botcito1', 'GreenMachiine2020@gmail.com', '$2y$10$x7F2g76wjY/jk7YoCXm9/u7Sl6DkIMVjqHxhCHP/c9x', 'paciente', '', ''),
-(13, 'botcito', 'fcmacx0806@gmelk.com', '$2y$10$ze.1I8i.8ckhw2m4q3GJSOIfJB72Jm.UkJiweXQNpUl', 'paciente', '', ''),
-(14, 'Dani uwu', 'mamuteo322@gmail.com', '$2y$10$rvvTP5G6sNQ6WfULlE4r0eWOR7c2Az4TOydD62eGOP8', 'paciente', '', ''),
-(15, 'maishet', 'www@gmail.com', '$2y$10$CZ.4bMDMW3IrCF20ftC1VOCOQFe/M8BMNGl/uyHIInP', 'paciente', '', ''),
-(17, 'ana', 'anaavellana@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'paciente', '', ''),
-(18, 'pepe', 'maishet.ventura@gmail.com', '$2y$10$TCayYvl/o7TmMAUbXazRJ.RvaU9kinstrM9/f9mJNbo', 'paciente', '', ''),
-(19, 'paciente', 'paciente@gmail.com', '$2y$10$AYz6bPJlgEqAFHKDKBlBs.sgpEeIYAH0bLwjsB2NCaZ', 'paciente', '', ''),
-(21, 'admin', 'admin.gmail.com', '$2y$10$ej2geEw3addKNswx2fR0SONFZmqHzTZ08wtnaKbckh6', 'paciente', '', '');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `data_medica`
---
-ALTER TABLE `data_medica`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user_medica` (`id_user`),
-  ADD KEY `id_category_medica` (`category_id`);
-
---
--- Indices de la tabla `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `data_medica`
---
-ALTER TABLE `data_medica`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `data_medica`
---
-ALTER TABLE `data_medica`
-  ADD CONSTRAINT `id_category_medica` FOREIGN KEY (`category_id`) REFERENCES `categorias` (`id`),
-  ADD CONSTRAINT `id_user_medica` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-COMMIT;
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `photo`) VALUES
+(1, 'moises ventura', 'cristhofer.ventura@unmsm.edu.pe', '827ccb0eea8a706c4c34a16891f84e7b', 'admin', ''),
+(11, 'maria guevara', 'GreenMachiine2020@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'paciente', ''),
+(13, 'angel fernandez', 'fcmacx0806@gmelk.com', '827ccb0eea8a706c4c34a16891f84e7b', 'paciente', ''),
+(14, 'Dani uwu', 'mamuteo322@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'paciente', ''),
+(15, 'maicol gonzales', 'www@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'paciente', ''),
+(17, 'ana maria', 'anaavellana@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'paciente', ''),
+(18, 'pepe marcelo', 'maishet.ventura@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'doctor', ''),
+(19, 'juana larco', 'juanalarco@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'doctor', ''),
+(22, 'rosa margarita', 'rosa@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'doctor', ''),
+(23, 'juan carrasco', 'juanca@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'doctor', ''),
+(24, 'abigail arce', 'abi23@gmail.com', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'paciente', ''),
+(25, 'paolo coronado', 'paolo@hotmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'paciente', '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -26,33 +26,37 @@ if(!isset($_SESSION['user_id'])){
         <link rel="shortcut icon" type="image/x-icon" href="../img/pestana.png"> <!-- imagen q sale en la pestaña -->
 
         <link rel="stylesheet" href="../css/styles.css"> <!-- LO PUEDES CAMBIAR A "../css/styles.css" -->
+
         
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
 
 
     </head>
-    <body class="sidebarMode">
+    <body>
 
     <!-- chat html code -->
 
-    <!-- see messages html you can add it any where -->
-
     <!-- Menu de Navegacion -->
     <header id="header">
-        <nav class="menu">
-        <div class="logo-box">
-        <h1><a href="index.php">vid 19 - <?php echo $role?></a></h1>
-        <span class="btn-menu"><i class="fas fa-bars"></i></span> <!-- Icono de barra de menu -->
-        </div>
-        
-        <div class="list-container">
-            <ul class="lists">
-                <li><a href="index.php" class="activo"><?php echo $user?></a></li>
-                <li><a href="darReceta.php">Dar receta</a></li>
-                <li><a href="../php/cerrar_login_usuario.php">Cerrar sesion</a></li>
-            </ul>
-        </div>
-        </nav>
+    <nav class="menu">
+     <div class="logo-box">
+       <h1><a href="index.php">vid 19 - <?php echo $role?></a></h1>
+       <span class="btn-menu"><i class="fas fa-bars"></i></span> <!-- Icono de barra de menu -->
+     </div>
+     
+     <div class="list-container">
+        <ul class="lists">
+            <li><a class="activo"><?php echo $user?></a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
+            <li><a href="locales.php">Buscar locales de oxigeno</a></li>
+            <li><a href="misCitas.php">Mis Citas</a></li>
+            <li><a href="misRecetas.php">Mis Recetas</a></li>
+            <li><a href="../php/cerrar_login_usuario.php">Cerrar sesion</a></li>
+        </ul>
+     </div>
+    </nav>
+    <!-- Imagen Header -->
+
     </header>
     <?php
         include_once '../php/config.php';
@@ -104,6 +108,7 @@ if(!isset($_SESSION['user_id'])){
                 </div>
             </div>
     </div>
+    
     <br> <br>
     <!--Your website html code here -->
     </div>
@@ -119,10 +124,7 @@ if(!isset($_SESSION['user_id'])){
         </div>
     </main>
 
-            <script src="js/script.js"></script>
-            <script src="js/app.js"></script>
+            <script src="../js/script.js"></script>
+            <script src="../js/app.js"></script>
     </body>
 </html>
-
-
-

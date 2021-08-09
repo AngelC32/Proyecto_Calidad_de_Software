@@ -32,10 +32,11 @@ if(!isset($_SESSION['user_id'])){
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!-- Custom Theme files -->
         <link href="css/wickedpicker.css" rel="stylesheet" type='text/css' media="all" />
-        <link href="css/style.css" rel='stylesheet' type='text/css' />
+        <link href="css/styles.css" rel='stylesheet' type='text/css' /><link href="css/styles.css" rel='stylesheet' type='text/css' />
         <!--fonts--> 
         <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
         <link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+<!--//fonts--> 
         <!--//fonts--> 
 
     </head>
@@ -47,12 +48,18 @@ if(!isset($_SESSION['user_id'])){
        <h1><a href="index.php">vid 19 - <?php echo $role?></a></h1>
        <span class="btn-menu"><i class="fas fa-bars"></i></span> <!-- Icono de barra de menu -->
      </div>
+     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
+                <img class="img-profile rounded-circle" src="https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_people_person_profile_user_woman_icon_123359.png"> 
+     </a>
      
      <div class="list-container">
         <ul class="lists">
-            <li><a class="activo"><?php echo $user?></a></li>
-            <li><a href="#">Recomendaciones</a></li>
+            <li><a href="index.php" class="activo"><?php echo $user?></a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
             <li><a href="locales.php">Buscar locales de oxigeno</a></li>
+            <li><a href="misCitas.php">Mis Citas</a></li>
+            <li><a href="misRecetas.php">Mis Recetas</a></li>
             <li><a href="../php/cerrar_login_usuario.php">Cerrar sesion</a></li>
         </ul>
      </div>
@@ -79,13 +86,13 @@ if(!isset($_SESSION['user_id'])){
 	<div class="book-appointment">
 	<h2>Hacer una cita</h2>
 				
-			<form action="../src/enviar-mail.php" method="post" name="appointment" id="appointment">
+			<form action="registrarCita.php" method="post" name="appointment" id="appointment">
 			<div id="resultados_ajax" class="gaps"></div>
 			<div class="left-agileits-w3layouts same">
 			
 			<div class="gaps">
 				<p>Nombre completo</p>
-					<input type="text" name="name" placeholder="" required=""/>
+					<input type="text" name="name" placeholder="" value="<?php echo $user?>" required=""/>
 			</div>	
 				<div class="gaps">	
 				<p>Número de teléfono</p>
@@ -96,8 +103,8 @@ if(!isset($_SESSION['user_id'])){
 						<input type="email" name="email" placeholder="" value="<?php echo $email?>" required="" />
 				</div>	
 				<div class="gaps">
-				<p>Síntomas</p>
-						<textarea name="symptoms" placeholder="" required="" ></textarea>
+				<p>Enlace meet</p>
+						<input type="text" name="symptoms" placeholder="" required="" >
 				</div>
 			</div>
 			<div class="right-agileinfo same">
@@ -159,7 +166,7 @@ if(!isset($_SESSION['user_id'])){
 				  var parametros = $(this).serialize();
 				  $.ajax({
 						type: "POST",
-						url: "../src/enviar-mail.php",
+						url: "registrarCita.php",
 						data: parametros,
 						 beforeSend: function(objeto){
 							$("#resultados_ajax").html("Enviando...");
@@ -174,8 +181,8 @@ if(!isset($_SESSION['user_id'])){
 			</script>	
 
 
-            <script src="js/script.js"></script>
-            <script src="js/app.js"></script>
+            <script src="../js/script.js"></script>
+            <script src="../js/app.js"></script>
     </body>
     <!-- soporte con whatsapp -->
     <footer>

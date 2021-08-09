@@ -35,8 +35,8 @@
         <ul class="lists">
             <li><a href="index.html" class="activo">Inicio</a></li>
             <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="#">Preguntas Frecuentes</a></li>
-            <li><a href="#">Contactos</a></li>
+            <li><a href="preguntas frecuentes.html">Preguntas Frecuentes</a></li>
+            <li><a href="login.php">Iniciar Sesión</a></li>
         </ul>
      </div>
     </nav>

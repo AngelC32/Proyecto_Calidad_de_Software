@@ -1,0 +1,49 @@
+.uiLayer {
+    outline: none;
+}
+ 
+.uiContextualLayerPositioner {
+    height: 0;
+    position: absolute;
+    z-index: 200;
+font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}.uiContextualLayer {
+    position: absolute;
+}.uiTooltipX {
+    max-width: 334px;
+    position: relative;
+    zoom: 1;
+}.uiContextualLayerAboveLeft>.uiTooltipX, .uiContextualLayerAboveRight>.uiTooltipX, .uiContextualLayerAboveCenter>.uiTooltipX {
+    margin-bottom: 1px;
+    padding-bottom: 4px;
+}.uiTooltipX .tooltipContent {
+    background-color: #282828;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 6px 8px;
+    text-align: left;
+}.tooltipText {
+    line-height: 1.5;
+}.uiTooltipX .tooltipText span {
+    zoom: 1;
+}.uiContextualLayerAboveLeft>.uiTooltipX i.arrow, .uiContextualLayerBelowLeft>.uiTooltipX i.arrow {
+    left: 12px;
+}
+ 
+.uiContextualLayerAboveLeft>.uiTooltipX i.arrow, .uiContextualLayerAboveRight>.uiTooltipX i.arrow, .uiContextualLayerAboveCenter>.uiTooltipX i.arrow {
+    border-bottom: 0;
+    border-top-color: #282828;
+    bottom: 0;
+}
+ 
+.uiTooltipX i.arrow {
+    border: 4px solid transparent;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    position: absolute;
+    width: 0;
+}

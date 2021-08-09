@@ -3,11 +3,9 @@ include_once '../../php/config.php';
 //$objeto = new Conexion();
 //$conexion = $objeto->Conectar();
 
-$username = (isset($_POST['username'])) ? $_POST['username'] : '';
-$email = (isset($_POST['email'])) ? $_POST['email'] : '';
-$password = (isset($_POST['password'])) ? $_POST['password'] : '';
-$password = md5($password);
-$rol = (isset($_POST['role'])) ? $_POST['role'] : '';
+$title = (isset($_POST['title'])) ? $_POST['title'] : '';
+$meet = (isset($_POST['meet'])) ? $_POST['meet'] : '';
+$url = (isset($_POST['url'])) ? $_POST['url'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -16,32 +14,32 @@ $user_id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO users (username, email, password, role) VALUES('$username', '$email', '$password', '$rol') ";			
+        $consulta = "INSERT INTO receta (title, meet, url) VALUES('$title', '$meet', '$url') ";			
         $resultado = $connection->prepare($consulta);
         $resultado->execute(); 
         
-        $consulta = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
+        $consulta = "SELECT * FROM receta ORDER BY id DESC LIMIT 1";
         $resultado = $connection->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE users SET username='$username', email='$email', password='$password', role='$rol' WHERE id='$user_id' ";		
+        $consulta = "UPDATE receta SET title='$title', meet='$meet', url='$url' WHERE id='$user_id' ";		
         $resultado = $connection->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT * FROM users WHERE id='$user_id' ";       
+        $consulta = "SELECT * FROM receta WHERE id='$user_id' ";       
         $resultado = $connection->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
-        $consulta = "DELETE FROM users WHERE id ='$user_id' ";		
+        $consulta = "DELETE FROM receta WHERE id ='$user_id' ";		
         $resultado = $connection->prepare($consulta);
         $resultado->execute();                           
         break;
     case 4:    
-        $consulta = "SELECT * FROM users";
+        $consulta = "SELECT * FROM receta";
         $resultado = $connection->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);

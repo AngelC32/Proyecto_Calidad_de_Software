@@ -3,11 +3,14 @@ include_once '../../php/config.php';
 //$objeto = new Conexion();
 //$conexion = $objeto->Conectar();
 
-$username = (isset($_POST['username'])) ? $_POST['username'] : '';
+$paciente = (isset($_POST['paciente'])) ? $_POST['paciente'] : '';
+$number = (isset($_POST['number'])) ? $_POST['number'] : '';
 $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-$password = (isset($_POST['password'])) ? $_POST['password'] : '';
-$password = md5($password);
-$rol = (isset($_POST['role'])) ? $_POST['role'] : '';
+$sintomas = (isset($_POST['sintomas'])) ? $_POST['sintomas'] : '';
+$saturacion = (isset($_POST['saturacion'])) ? $_POST['saturacion'] : '';
+$doctor = (isset($_POST['doctor'])) ? $_POST['doctor'] : '';
+$fecha = (isset($_POST['fecha'])) ? $_POST['fecha'] : '';
+$hora = (isset($_POST['hora'])) ? $_POST['hora'] : '';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
@@ -16,32 +19,33 @@ $user_id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 switch($opcion){
     case 1:
-        $consulta = "INSERT INTO users (username, email, password, role) VALUES('$username', '$email', '$password', '$rol') ";			
+        $consulta = "INSERT INTO files (paciente, number, email, sintomas, saturacion, doctor, fecha, hora) 
+                VALUES('$paciente', '$number', '$email', '$sintomas', '$saturacion', '$doctor', '$fecha', '$hora') ";			
         $resultado = $connection->prepare($consulta);
         $resultado->execute(); 
         
-        $consulta = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
+        $consulta = "SELECT * FROM files ORDER BY id DESC LIMIT 1";
         $resultado = $connection->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);       
         break;    
     case 2:        
-        $consulta = "UPDATE users SET username='$username', email='$email', password='$password', role='$rol' WHERE id='$user_id' ";		
+        $consulta = "UPDATE files SET paciente='$paciente', number='$number', email='$email', sintomas='$sintomas', saturacion='$saturacion', doctor='$doctor', fecha='$fecha', hora='$hora' WHERE id='$user_id' ";		
         $resultado = $connection->prepare($consulta);
         $resultado->execute();        
         
-        $consulta = "SELECT * FROM users WHERE id='$user_id' ";       
+        $consulta = "SELECT * FROM files WHERE id='$user_id' ";       
         $resultado = $connection->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
     case 3:        
-        $consulta = "DELETE FROM users WHERE id ='$user_id' ";		
+        $consulta = "DELETE FROM files WHERE id ='$user_id' ";		
         $resultado = $connection->prepare($consulta);
         $resultado->execute();                           
         break;
     case 4:    
-        $consulta = "SELECT * FROM users";
+        $consulta = "SELECT * FROM files";
         $resultado = $connection->prepare($consulta);
         $resultado->execute();        
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
